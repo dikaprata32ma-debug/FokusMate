@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusMate | Study Productivity</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="/" class="brand">
+            <span class="brand-icon">F</span>
+            FocusMate
+        </a>
+
+        <p class="nav-label">MENU UTAMA</p>
+
+        <nav>
+            <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+            <a class="nav-link" href="#timer">◷ Focus Timer</a>
+            <a class="nav-link" href="#tasks">☷ Tugas Saya</a>
+            <a class="nav-link" href="#statistics">▥ Statistik</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="quote-icon">✦</div>
+            <p>"Fokus pada proses, hasil akan mengikuti."</p>
+            <small>— FocusMate</small>
+        </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">DASHBOARD MAHASISWA</p>
+                <h1>Halo, Mahasiswa! ☀️</h1>
+                <p class="muted">Atur waktumu, selesaikan tugasmu, raih tujuanmu.</p>
+            </div>
+
+            <div class="profile">
+                <span class="profile-dot"></span>
+                Study Mode
+            </div>
+        </header>
+
+        <section class="summary-grid">
+            <article class="summary-card">
+                <span class="summary-icon blue">◷</span>
+                <p>Waktu Belajar</p>
+                <h2 id="study-total">0 menit</h2>
+                <small>Total waktu fokus hari ini</small>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-icon green">✓</span>
+                <p>Tugas Selesai</p>
+                <h2 id="task-total">0</h2>
+                <small>Tugas yang diselesaikan</small>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-icon purple">◎</span>
+                <p>Target Belajar</p>
+                <h2>120 menit</h2>
+                <small id="target-status">Ayo mulai belajar!</small>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-icon orange">✦</span>
+                <p>Sesi Fokus</p>
+                <h2 id="session-total">0</h2>
+                <small>Sesi selesai hari ini</small>
+            </article>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel timer-panel" id="timer">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Focus Timer</h2>
+                        <p>Waktunya fokus pada tujuanmu.</p>
+                    </div>
+                    <span class="heading-icon">◷</span>
+                </div>
+
+                <div class="mode-switch">
+                    <button class="mode-btn active" data-mode="focus">Fokus</button>
+                    <button class="mode-btn" data-mode="short">Istirahat</button>
+                    <button class="mode-btn" data-mode="long">Panjang</button>
+                </div>
+
+                <div class="timer-circle" id="timer-circle">
+                    <div class="timer-inner">
+                        <span id="timer-display">25:00</span>
+                        <small id="timer-label">WAKTU FOKUS</small>
+                    </div>
+                </div>
+
+                <p id="timer-status" class="timer-status">
+                    Siap memulai sesi belajar?
+                </p>
+
+                <div class="timer-controls">
+                    <button id="start-btn" class="btn-primary">
+                        ▶ Mulai Fokus
+                    </button>
+                    <button id="reset-btn" class="btn-reset" title="Reset timer">
+                        ↻
+                    </button>
+                </div>
+
+                <p class="timer-note">
+                    💡 Jauhkan distraksi dan fokus pada satu tugas.
+                </p>
+            </article>
+
+            <article class="panel tasks-panel" id="tasks">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Tugas Hari Ini</h2>
+                        <p>Langkah kecil menuju target besar.</p>
+                    </div>
+                    <span class="task-count" id="task-count">0 tugas</span>
+                </div>
+
+                <form id="task-form">
+                    <input
+                        id="task-input"
+                        type="text"
+                        placeholder="Tulis tugas baru..."
+                        maxlength="150"
+                        required
+                    >
+                    <button type="submit" class="btn-primary add-btn">
+                        + Tambah
+                    </button>
+                </form>
+
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all">Semua</button>
+                    <button class="filter-btn" data-filter="active">Belum selesai</button>
+                    <button class="filter-btn" data-filter="done">Selesai</button>
+                </div>
+
+                <ul id="task-list" class="task-list"></ul>
+
+                <p id="empty-state" class="empty-state">
+                    Belum ada tugas. Tambahkan tugas pertamamu!
+                </p>
+            </article>
+        </section>
+
+        <section class="panel statistics-panel" id="statistics">
+            <div class="panel-heading">
+                <div>
+                    <h2>Produktivitas Saya</h2>
+                    <p>Perjalanan belajarmu dimulai dari sini.</p>
+                </div>
+                <span class="statistics-emoji">📈</span>
+            </div>
+
+            <div class="progress-header">
+                <span>Target belajar harian</span>
+                <strong id="progress-label">0 / 120 menit</strong>
+            </div>
+
+            <div class="progress-track">
+                <div id="progress-bar"></div>
+            </div>
+
+            <div class="statistics-bottom">
+                <div class="mini-stat">
+                    <span>⏱️</span>
+                    <div>
+                        <small>Total fokus</small>
+                        <strong id="stat-focus">0 menit</strong>
+                    </div>
+                </div>
+
+                <div class="mini-stat">
+                    <span>🎯</span>
+                    <div>
+                        <small>Sesi selesai</small>
+                        <strong id="stat-sessions">0 sesi</strong>
+                    </div>
+                </div>
+
+                <div class="mini-stat">
+                    <span>✅</span>
+                    <div>
+                        <small>Tugas selesai</small>
+                        <strong id="stat-tasks">0 tugas</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 FocusMate · Belajar lebih fokus, hidup lebih produktif.
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
